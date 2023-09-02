@@ -1,0 +1,10 @@
+.fondo{
+    background: linear-gradient(
+      180deg,
+      rgb(98, 146, 84) 0%,
+      rgb(56, 187, 44) 15%,
+      rgb(13, 90, 11) 30%,
+      rgb(6, 65, 29) 45%,
+      rgb(34, 15, 33) 100%
+    );  
+  }
