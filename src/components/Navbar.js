@@ -11,14 +11,17 @@ function Navbar() {
         <div className="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
           <ul className="navbar-nav text-end">
             <li className="nav-item">
-              <a className="nav-link text-white " href="#">Features</a>
+              <a className="nav-link text-white " href="/test">Tareas</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link text-white " href="/users">Users</a>
+              <a className="nav-link text-white " href="/users">Usuarios</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link text-white " href="/infoTeachers">Plantel Docente</a>
             </li>
             <li className="nav-item dropdown">
               <a className="nav-link text-white  dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown link
+                Más
               </a>
               <ul className="dropdown-menu">
                 <li><a className="dropdown-item" href="#">Action</a></li>

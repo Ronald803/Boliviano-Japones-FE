@@ -8,7 +8,8 @@ function CreateUserForm() {
         cellphone:"",
         level:"",
         schedule:"",
-        password:""
+        password:"",
+        rol: "",
     });
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -50,7 +51,7 @@ function CreateUserForm() {
             className='bg-transparent text-white card-body'
         >
             <div className='input-group'>
-                <span htmlFor='name' className='bg-transparent text-white input-group-text'>Name </span>
+                <span htmlFor='name' className='bg-transparent text-white input-group-text'>Nombre</span>
                 <input
                     type='text'
                     id='name'
@@ -61,7 +62,7 @@ function CreateUserForm() {
             </div>
             
             <div className='bg-transparent text-white input-group'>
-                <span htmlFor='email' className='bg-transparent text-white input-group-text'>Email </span>
+                <span htmlFor='email' className='bg-transparent text-white input-group-text'>Email</span>
                 <input
                     type='text'
                     id='email'
@@ -82,7 +83,7 @@ function CreateUserForm() {
                 />
             </div>
             <div className='bg-transparent text-white input-group'>
-                <span htmlFor='password' className='bg-transparent text-white input-group-text'>Password:</span>
+                <span htmlFor='password' className='bg-transparent text-white input-group-text'>Contraseña</span>
                 <input
                     type='password'
                     id='password'
@@ -92,7 +93,7 @@ function CreateUserForm() {
                 />
             </div>
             <div className='bg-transparent text-white input-group'>
-                <span htmlFor='level' className='bg-transparent text-white input-group-text'>Level </span>
+                <span htmlFor='level' className='bg-transparent text-white input-group-text'>Curso</span>
                 <select 
                     name='level'
                     id='level'
@@ -100,14 +101,16 @@ function CreateUserForm() {
                     className='bg-transparent form-select'
                 >
                     <option value="">Elige una opción</option>
-                    <option value='Básico'>Básico</option>
-                    <option value='Auxiliar'>Auxiliar</option>
-                    <option value='Medio I'>Medio I</option>
-                    <option value='Medio II'>Medio II</option>
+                    <option value='Primero'>Primero</option>
+                    <option value='Segundo'>Segundo</option>
+                    <option value='Tercero'>Tercero</option>
+                    <option value='Cuarto'>Cuarto</option>
+                    <option value='Quinto'>Quinto</option>
+                    <option value='Sexto'>Sexto</option>
                 </select>
             </div>
             <div className='bg-transparent text-white input-group'>
-                <span htmlFor='schedule' className='bg-transparent text-white input-group-text'>Schedule</span>
+                <span htmlFor='schedule' className='bg-transparent text-white input-group-text'>Turno</span>
                     <select
                         name='schedule'
                         id='schedule'
@@ -117,10 +120,11 @@ function CreateUserForm() {
                         <option value="">Elige una opción</option>
                         <option value='Mañana'>Mañana</option>
                         <option value='Tarde'>Tarde</option>
-                        <option value='Noche'>Noche</option>
                     </select>
             </div>
-            <button className='bg-transparent text-white mt-2 btn btn-secondary'>Sign Up</button>
+            <div className='text-center'>
+                <button className='bg-transparent text-white mt-2 btn btn-secondary'>Guardar Usuario</button>
+            </div>
         </form>
     </div>
   )
