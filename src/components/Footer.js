@@ -2,7 +2,7 @@ import React from 'react'
 
 function Footer() {
   return (
-    <footer class="bg-dark text-light card" style={{"marginTop":"10px"}}>
+    <footer class="bg-danger text-light card" style={{"marginTop":"10px"}}>
         <div class="container card-body" style={{"maxWidth": "1200px"}}>
             <div class="row">
                 <div class="col-sm-6">

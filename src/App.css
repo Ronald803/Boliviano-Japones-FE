@@ -8,3 +8,11 @@
       rgb(34, 15, 33) 100%
     );  
   }
+
+.fondo-pantalla {
+  background-image: url('/public/img/ingles-portada.webp');
+  background-size: cover; /* Ajusta la imagen al tamaño del contenedor */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+}
+  
+  

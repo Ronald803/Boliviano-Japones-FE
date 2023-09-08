@@ -2,28 +2,29 @@ import React from 'react'
 
 function LoginForm() {
   return (
-    <div className='bg-transparent text-white border-white card'>
-        <form className='bg-transparent text-white card-body'>
-            <div className='bg-transparent text-white mb-3'>
-                <label className='bg-transparent text-white form-label' htmlFor='email'>Email</label>
+    <div className='bg-transparent  border-white card rounded'>
+        <form className='bg-danger bg-opacity-75  card-body rounded py-4'>
+            <div className='bg-transparent  mb-3'>
+                <label className='bg-transparent  form-label text-white' htmlFor='email'>Nombre de Usuario</label>
                 <input
                     type='text'
                     id='email'
                     name='email'
-                    className='bg-transparent text-white form-control'
-
+                    className='form-control'
                 />
             </div>
-            <div className='bg-transparent text-white mb-3'>
-                <label className='bg-transparent text-white form-label' htmlFor='password'>Password</label>
+            <div className='bg-transparent  mb-3'>
+                <label className='bg-transparent  form-label text-white' htmlFor='password'>Contraseña</label>
                 <input
-                    className='bg-transparent text-white form-control'
+                    className='form-control'
                     type='password'
                     id='password'
                     name='password'
                 />
             </div>
-            <button className=' text-white btn btn-success'>Login</button>
+            <div className='text-center'>
+                <button className='btn btn-dark'>Login</button>
+            </div>
         </form>
     </div>
   )

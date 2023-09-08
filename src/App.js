@@ -9,7 +9,7 @@ import InfoTeachersPage from './pages/InfoTeachersPage';
 
 function App() {
   return (
-    <div className="App fondo" >
+    <div className="App fondo-pantalla" >
       <Navbar/>
         <BrowserRouter>
           <div style={{"marginLeft":"auto","marginRight":"auto","maxWidth":"1200px"}}  >
