@@ -7,7 +7,7 @@ function Footer() {
             <div class="row">
                 <div class="col-sm-6">
                     <h5>Visitanos</h5>
-                    <p>Dirección: Calle Tihuanaco N°8, frente Hotel Europa</p>
+                    <p>Dirección: EL ALTO  3</p>
                     
                 </div>
                 <div class="col-sm-3">

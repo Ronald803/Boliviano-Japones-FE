@@ -17,13 +17,12 @@ function TestTable() {
             } )
     }
   return (
-    <div>
+    <div className='mx-auto' style={{"maxWidth":"500px"}}>
         <table className='table table-dark table-bordered'>
             <thead>
                 <tr>
                     <th scope='col'>#</th>
                     <th scope='col'>Name</th>
-                    <th scope='col'>Level</th>
                     <th scope='col'>Points</th>
                 </tr>
             </thead>

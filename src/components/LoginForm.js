@@ -41,28 +41,30 @@ function LoginForm() {
   return (
     <div className='bg-transparent  border-white card rounded'>
         <form onSubmit={handleSubmit} className='bg-danger bg-opacity-75  card-body rounded py-4'>
-            <div className='bg-transparent  mb-3'>
-                <label className='bg-transparent  form-label text-white' htmlFor='name'>Nombre de Estudiante</label>
-                <input
-                    type='text'
-                    id='name'
-                    name='name'
-                    className='form-control'
-                    onChange={handleChange}
-                />
-            </div>
-            <div className='bg-transparent  mb-3'>
-                <label className='bg-transparent  form-label text-white' htmlFor='password'>Contraseña</label>
-                <input
-                    className='form-control'
-                    type='password'
-                    id='password'
-                    name='password'
-                    onChange={handleChange}
-                />
-            </div>
-            <div className='text-center'>
-                <button className='btn btn-dark'>Login</button>
+            <div className='py-2'>
+                <div className='bg-transparent  mb-3'>
+                    <label className='bg-transparent  form-label text-white' htmlFor='name'>Nombre de Estudiante</label>
+                    <input
+                        type='text'
+                        id='name'
+                        name='name'
+                        className='form-control'
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className='bg-transparent  mb-3'>
+                    <label className='bg-transparent  form-label text-white' htmlFor='password'>Contraseña</label>
+                    <input
+                        className='form-control'
+                        type='password'
+                        id='password'
+                        name='password'
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className='text-center'>
+                    <button className='btn btn-dark'>Login</button>
+                </div>
             </div>
         </form>
     </div>

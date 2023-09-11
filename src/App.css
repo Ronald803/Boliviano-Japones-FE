@@ -15,4 +15,8 @@
   background-repeat: no-repeat; /* Evita que la imagen se repita */
 }
   
-  
+.fondo-logo {
+  background-image: url('/public/img/logo.png');
+  background-size:auto; /* Ajusta la imagen al tamaño del contenedor */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+}

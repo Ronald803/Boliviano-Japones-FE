@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 function Navbar() {
+  const [translator, setTranslator] = useState(false)
   return (
     <nav className="navbar navbar-expand-lg bg-danger">
       <div className="container-fluid">
-        <a className="navbar-brand text-white" href="#">UE Boliviano Japonés</a>
+        <a className="navbar-brand text-white" href="/">UE Boliviano Japonés B</a>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -19,19 +20,21 @@ function Navbar() {
             <li className="nav-item">
               <a className="nav-link text-white " href="/infoTeachers">Plantel Docente</a>
             </li>
-            <li className="nav-item dropdown">
-              <a className="nav-link text-white  dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Más
-              </a>
-              <ul className="dropdown-menu">
-                <li><a className="dropdown-item" href="#">Action</a></li>
-                <li><a className="dropdown-item" href="#">Another action</a></li>
-                <li><a className="dropdown-item" href="#">Something else here</a></li>
-              </ul>
+            <li onClick={()=>setTranslator(!translator)}>
+            <a className="nav-link text-white " href="#">Traductor</a>
             </li>
           </ul>
         </div>
       </div>
+      {
+        translator 
+        &&
+        <div className='' style={{"position":"relative"}}>
+          <div style={{"position":"absolute","right":"0px","top":"30px"}}>
+            traductor
+          </div>
+        </div>
+      }
     </nav>
   )
 }
