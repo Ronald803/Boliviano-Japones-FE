@@ -4,10 +4,10 @@ import axios from 'axios'
 const url = 'http://localhost:4000';
 //const url = 'https://learn-english-backend-1ymtsw2jj-ronald803.vercel.app/'
 
-export function postStudentBackend(student){
-    return axios.post(`${url}/api/students`,student)
+export function getExamsBackend(idClasses){
+    return axios.get(`${url}/api/tests`)
 }
 
-export function loginStudent(student){
-    return axios.post(`${url}/api/auth?rol=student`,student)
+export function getQuestions(idTest){
+    return axios.get(`${url}/api/questions?test=${idTest}`)
 }
