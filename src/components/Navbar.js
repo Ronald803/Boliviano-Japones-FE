@@ -4,17 +4,18 @@ import Translator from './Translator'
 function Navbar() {
   const [translator, setTranslator] = useState(false)
   return (
-    <nav className="navbar navbar-expand-lg bg-danger">
+  <div style={{"position":"relative"}} className='bg-danger'>
+    <div style={{"position":"absolute","left":"0px","top":"0px","width":"100%"}} className='text-center pt-1 my-0 '><a className="navbar-brand text-white m-0" href="/"><h3 className='my-0'>UE Boliviano Japonés B</h3></a></div>
+    <nav  className="navbar navbar-expand-lg bg-transparent pt-2 pb-1">
       <div className="container-fluid">
-        <a className="navbar-brand text-white" href="/">UE Boliviano Japonés B</a>
+        <div onClick={()=>setTranslator(!translator)}>
+          <a className="nav-link text-white " href="#">Traductor</a>
+        </div>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
           <ul className="navbar-nav text-end">
-            <li onClick={()=>setTranslator(!translator)}>
-              <a className="nav-link text-white " href="#">Traductor</a>
-            </li>
             <li className="nav-item">
               <a className="nav-link text-white " href="/test">Tareas</a>
             </li>
@@ -31,12 +32,13 @@ function Navbar() {
         translator 
         &&
         <div className='' style={{"position":"relative"}}>
-          <div className='bg-danger' style={{"position":"absolute","right":"0px","top":"30px","minWidth":"300px"}}>
+          <div className='bg-danger z-3 rounded' style={{"position":"absolute","right":"0px","top":"30px","minWidth":"300px"}}>
             <Translator/>
           </div>
         </div>
       }
     </nav>
+  </div>
   )
 }
 

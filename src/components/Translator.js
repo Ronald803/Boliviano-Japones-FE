@@ -36,7 +36,7 @@ export default function Translator() {
 
     }
     return (
-    <div>
+    <div className='p-2 border border-white'>
         <form onSubmit={handleSubmit} className='text-center'>
             <li className='nav-item'>
                 <a className='nav-link'>TRANSLATE A WORD</a>
