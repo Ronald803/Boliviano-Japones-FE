@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Translator from './Translator'
 
 function Navbar() {
   const [translator, setTranslator] = useState(false)
@@ -11,6 +12,9 @@ function Navbar() {
         </button>
         <div className="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
           <ul className="navbar-nav text-end">
+            <li onClick={()=>setTranslator(!translator)}>
+              <a className="nav-link text-white " href="#">Traductor</a>
+            </li>
             <li className="nav-item">
               <a className="nav-link text-white " href="/test">Tareas</a>
             </li>
@@ -20,9 +24,6 @@ function Navbar() {
             <li className="nav-item">
               <a className="nav-link text-white " href="/infoTeachers">Plantel Docente</a>
             </li>
-            <li onClick={()=>setTranslator(!translator)}>
-            <a className="nav-link text-white " href="#">Traductor</a>
-            </li>
           </ul>
         </div>
       </div>
@@ -30,8 +31,8 @@ function Navbar() {
         translator 
         &&
         <div className='' style={{"position":"relative"}}>
-          <div style={{"position":"absolute","right":"0px","top":"30px"}}>
-            traductor
+          <div className='bg-danger' style={{"position":"absolute","right":"0px","top":"30px","minWidth":"300px"}}>
+            <Translator/>
           </div>
         </div>
       }
