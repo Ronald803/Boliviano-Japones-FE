@@ -6,7 +6,7 @@ function Navbar() {
   return (
   <div style={{"position":"relative"}} className='bg-danger'>
     <div style={{"position":"absolute","left":"0px","top":"0px","width":"100%"}} className='text-center pt-1 my-0 '><a className="navbar-brand text-white m-0" href="/"><h3 className='my-0'>UE Boliviano Japonés B</h3></a></div>
-    <nav  className="navbar navbar-expand-lg bg-transparent pt-2 pb-1">
+    <nav  className="navbar navbar-expand-lg bg-transparent pt-4 pb-1">
       <div className="container-fluid">
         <div onClick={()=>setTranslator(!translator)}>
           <a className="nav-link text-white " href="#">Traductor</a>

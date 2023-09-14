@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { getExamsBackend } from '../axiosRequests/testsRequests';
 
-function TestTable() {
+function TestTable(props) {
+    const {takeTheTest} = props
     const [tests, setTests] = useState([]);
     useEffect(() => {
         getExam()
@@ -16,14 +17,15 @@ function TestTable() {
                 console.log({e});
             } )
     }
+    
   return (
     <div className='mx-auto' style={{"maxWidth":"500px"}}>
         <table className='table table-dark table-bordered'>
             <thead>
                 <tr>
-                    <th scope='col'>#</th>
-                    <th scope='col'>Name</th>
-                    <th scope='col'>Points</th>
+                    <th scope='col'><div className='text-center'>#</div></th>
+                    <th scope='col'><div className='text-center'>Name</div></th>
+                    <th scope='col'><div className='text-center'>Points</div></th>
                 </tr>
             </thead>
             <tbody>
@@ -32,20 +34,22 @@ function TestTable() {
                         return(
                         <tr>
                             <th>
-                                <span>{index}</span>
+                                <div className='text-center'><span>{index}</span></div>
                             </th>
-                            <td>
-                                <span>{test.name}</span>
-                            </td>
-                            <td>
+                            <th>
+                                <div className='text-center'><span>{test.name}</span></div>
+                            </th>
+                            <th>
+                                <div className='text-center'>
                                 {
                                     test.points !== null
                                     ?
                                     <span>{test.points}</span>
                                     :
-                                    <button className='btn btn-secondary btnSecondary' >Start</button>
+                                    <button className='btn btn-secondary btnSecondary' onClick={()=>takeTheTest(test._id)}>Start</button>
                                 }
-                            </td>
+                                </div>
+                            </th>
                         </tr>
                         )
                     } )
