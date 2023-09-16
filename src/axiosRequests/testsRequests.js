@@ -13,3 +13,7 @@ export function getExamsBackend(idClasses){
 export function getQuestions(idTest){
     return axios.get(`${url}/api/questions?test=${idTest}`)
 }
+
+export function postNewTestBackend(newTest){
+    return axios.post(`${url}/api/tests`,newTest,{headers:{'x-token': t}})
+}

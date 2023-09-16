@@ -9,6 +9,6 @@ export function postStudentBackend(student){
     return axios.post(`${url}/api/students`,student)
 }
 
-export function loginStudent(student){
-    return axios.post(`${url}/api/auth?rol=student`,student)
+export function loginToBackend(infoUser,rol){
+    return axios.post(`${url}/api/auth?rol=${rol}`,infoUser)
 }

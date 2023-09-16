@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage';
 import UserManagementPage from './pages/UserManagementPage';
 import TestPage from './pages/TestPage';
 import InfoTeachersPage from './pages/InfoTeachersPage';
+import CreateTestPage from './pages/CreateTestPage';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
               <Route path='/users'          element={<UserManagementPage/>}/>
               <Route path='/test'           element={<TestPage/>} />
               <Route path='/infoTeachers'   element={<InfoTeachersPage/>} />
+              <Route path='/create-test'    element={<CreateTestPage/>}/>
             </Routes>            
           </div>
         </BrowserRouter>
