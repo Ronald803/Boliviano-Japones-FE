@@ -17,3 +17,13 @@ export function getQuestions(idTest){
 export function postNewTestBackend(newTest){
     return axios.post(`${url}/api/tests`,newTest,{headers:{'x-token': t}})
 }
+
+export async function saveQuestionsBackend(newQuestions){
+    console.log(newQuestions);
+    let questionsAddedToBackend = await Promise.all(
+        newQuestions.map(q=>{
+            return axios.post(`${url}/api/questions`,q,{headers:{'x-token': t}})
+        })
+    )
+    return questionsAddedToBackend
+}

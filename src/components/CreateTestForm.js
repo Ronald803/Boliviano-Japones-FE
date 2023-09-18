@@ -10,7 +10,9 @@ function CreateTestForm(props) {
     description:"",
     classes: [],
     questions:0,
-    chapter:""
+    chapter:"",
+    numberOfAnswers:0,
+    testID: "1"
   })
   const [classesArray, setClassesArray] = useState([])
   useEffect(()=>{
@@ -47,6 +49,9 @@ function CreateTestForm(props) {
     postNewTestBackend(newTest)
       .then(answer=>{
         console.log(answer);
+        console.log(answer.data._id);
+        setNewTest({...newTest,testID:answer.data._id})
+        console.log(newTest);
         infoTest(newTest);
         createTest(true);
       })
@@ -90,7 +95,11 @@ function CreateTestForm(props) {
                     <label className='form-label' htmlFor='chapter'>Chapter:</label>
                     <input className='form-control' type='text' id='chapter' name='chapter' onChange={handleChange}/>
                 </div>
-                <button className='btn btn-dark'>Crear Nuevo Test</button>
+                <div className=''>
+                    <label className='form-label' htmlFor='numberOfAnswers'>Number of answers</label>
+                    <input className='form-control' type='text' id='numberOfAnswers' name='numberOfAnswers' onChange={handleChange}/>
+                </div>
+                <div className='text-center'><button className='btn btn-dark'>Crear Nuevo Test</button></div>
             </form>
         </div>
     </div>
