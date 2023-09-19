@@ -8,6 +8,7 @@ function TestPage() {
       {
         idTestToTake === "" ?
         <div>
+          <TakingTheTest></TakingTheTest>
           <TestTable takeTheTest={setIdTestToTake}/>
         </div>
         :
