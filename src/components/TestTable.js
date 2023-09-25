@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { getExamsBackend } from '../axiosRequests/testsRequests';
+import { getExamsBackend, getQuestionsToBackend } from '../axiosRequests/testsRequests';
 
 function TestTable(props) {
-    const {takeTheTest} = props
+    const {takeTheTest,setTheQuestions} = props
     const [tests, setTests] = useState([]);
     useEffect(() => {
         getExam()
     }, []);
+    const rol = localStorage.getItem('r')
     const getExam = async (parametro)=>{
         getExamsBackend()
             .then( tests => {
@@ -17,15 +18,31 @@ function TestTable(props) {
                 console.log({e});
             } )
     }
+    const chooseTest = (idTest)=>{
+        getQuestionsToBackend(idTest)
+            .then(answer=>{
+                setTheQuestions(answer.data)
+                takeTheTest(true)
+            })
+            .catch(error=>{console.log(error)})
+    }
     
   return (
-    <div className='mx-auto' style={{"maxWidth":"500px"}}>
+    <div className='pt-2 mx-auto' style={{"maxWidth":"500px"}}>
         <table className='table table-dark table-bordered'>
             <thead>
                 <tr>
                     <th scope='col'><div className='text-center'>#</div></th>
                     <th scope='col'><div className='text-center'>Name</div></th>
-                    <th scope='col'><div className='text-center'>Points</div></th>
+                    {
+                        rol==="student" && <th scope='col'><div className='text-center'>Points</div></th>
+                    }
+                    {
+                        rol==="teacher" && <th scope='col'><div className='text-center'>Level</div></th>
+                    }
+                                        {
+                        rol==="teacher" && <th scope='col'><div className='text-center'></div></th>
+                    }
                 </tr>
             </thead>
             <tbody>
@@ -39,17 +56,27 @@ function TestTable(props) {
                             <th>
                                 <div className='text-center'><span>{test.name}</span></div>
                             </th>
-                            <th>
-                                <div className='text-center'>
-                                {
-                                    test.points !== null
-                                    ?
-                                    <span>{test.points}</span>
-                                    :
-                                    <button className='btn btn-secondary btnSecondary' onClick={()=>takeTheTest(test._id)}>Start</button>
-                                }
-                                </div>
-                            </th>
+                            {
+                                rol==="student"
+                                &&
+                                <th>
+                                    <div className='text-center'>
+                                    {
+                                        test.points !== null
+                                        ?
+                                        <span>{test.points}</span>
+                                        :
+                                        <button className='btn btn-secondary btnSecondary' onClick={()=>chooseTest(test._id)}>Start</button>
+                                    }
+                                    </div>
+                                </th>
+                            }
+                            {
+                                rol==="teacher" && <th><div className='text-center'><span>{test.level}</span></div></th>
+                            }
+                            {
+                                rol==="teacher" && <th><div className='text-center'><button className='btn btn-secondary'>Ver Examen</button></div></th>
+                            }
                         </tr>
                         )
                     } )

@@ -2,18 +2,19 @@ import React, { useState } from 'react'
 import TestTable from '../components/TestTable'
 import TakingTheTest from '../components/TakingTheTest'
 function TestPage() {
-  const [idTestToTake, setIdTestToTake] = useState("")
+  const [takeTest, setTakeTest] = useState(false);
+  const [questions, setQuestions] = useState([])
+  console.log("testPage línea 6");
   return (
     <div>
       {
-        idTestToTake === "" ?
+        takeTest === false ?
         <div>
-          <TakingTheTest></TakingTheTest>
-          <TestTable takeTheTest={setIdTestToTake}/>
+          <TestTable takeTheTest={setTakeTest} setTheQuestions={setQuestions}/>
         </div>
         :
         <div>
-          <TakingTheTest idTest={idTestToTake} takeTheTest={setIdTestToTake}/>
+          <TakingTheTest takeTheTest={setTakeTest} data={questions}/>
         </div>
       }
     </div>

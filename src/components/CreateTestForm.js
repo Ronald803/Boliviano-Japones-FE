@@ -8,30 +8,13 @@ function CreateTestForm(props) {
   const [newTest, setNewTest] = useState({
     name:"",
     description:"",
-    classes: [],
+    level: "",
     questions:0,
     chapter:"",
+    lifeBook:0,
     numberOfAnswers:0,
     testID: "1"
   })
-  const [classesArray, setClassesArray] = useState([])
-  useEffect(()=>{
-    getClassesBackend()
-      .then(classes=>{
-        setClassesArray(classes.data)
-      })
-      .catch(e=>{console.log(e)})
-  },[])
-  const handleChangeClasses = (e) => {
-    let auxArrayClasses = [];
-    classesArray.map(classes=>{
-      if(classes.level===e.target.value){ auxArrayClasses.push(classes._id) }
-    })
-    setNewTest({
-      ...newTest,
-      classes: auxArrayClasses
-    })
-  }
   const handleChange = (e) => {
     setNewTest({
       ...newTest,
@@ -57,6 +40,7 @@ function CreateTestForm(props) {
       })
       .catch(e=>{console.log(e)})
   }
+  const allLevels = ["1ero Sec.","2do Sec.","3ero Sec.","4to Sec.","5to Sec.","6to Sec."]
   return (
     <div className='card mt-2' style={{"maxWidth":"600px","marginLeft":"auto","marginRight":"auto"}}>
         <div className='card-body'>
@@ -70,21 +54,19 @@ function CreateTestForm(props) {
                     <input className='form-control' type='text' id='description' name='description' onChange={handleChange}/>
                 </div>
                 <div className='mt-2'>
-                    <label htmlFor='level' className='form-label' >Curso</label>
+                    <label htmlFor='level' className='form-label'>Level</label>
                     <select 
-                        name='classes'
-                        id='classes'
-                        onChange={handleChangeClasses}
+                        name='level'
+                        id='level'
+                        onChange={handleChange}
                         className=' form-control'
                     >
-                        <option value="">Elige una opción</option>
-                        {
-                            classesArray?.map((classes,index)=>{
-                              if(index%2===0){
-                                return( <option value={classes.level} key={classes._id}>{classes.level}</option> )
-                              }
-                            })
-                        }
+                      <option value="">Elige una opción</option>
+                      {
+                        allLevels.map((level,index)=>{
+                          return ( <option value={level} key={index}>{level}</option> )
+                        })
+                      }
                     </select>
                 </div>
                 <div className=''>
@@ -94,6 +76,10 @@ function CreateTestForm(props) {
                 <div className=''>
                     <label className='form-label' htmlFor='chapter'>Chapter:</label>
                     <input className='form-control' type='text' id='chapter' name='chapter' onChange={handleChange}/>
+                </div>
+                <div className=''>
+                    <label className='form-label' htmlFor='lifeBook'>Life Book</label>
+                    <input className='form-control' type='number' id='lifeBook' name='lifeBook' onChange={handleChange}/>
                 </div>
                 <div className=''>
                     <label className='form-label' htmlFor='numberOfAnswers'>Number of answers</label>

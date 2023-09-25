@@ -1,17 +1,18 @@
 import axios from 'axios'
 
 const t = localStorage.getItem('t')
+const r = localStorage.getItem('r')
 //const url = 'https://learn-english-backend-bay.vercel.app';
 const url = 'http://localhost:4000';
 //const url = 'https://learn-english-backend-1ymtsw2jj-ronald803.vercel.app/'
 
 export function getExamsBackend(idClasses){
     console.log(t);
-    return axios.get(`${url}/api/tests/s`,{headers:{'x-token': t}})
+    return axios.get(`${url}/api/tests/${r}`,{headers:{'x-token': t}})
 }
 
-export function getQuestions(idTest){
-    return axios.get(`${url}/api/questions?test=${idTest}`)
+export function getQuestionsToBackend(idTest){
+    return axios.get(`${url}/api/questions/s?test=${idTest}`,{headers:{'x-token': t}})
 }
 
 export function postNewTestBackend(newTest){
@@ -26,4 +27,9 @@ export async function saveQuestionsBackend(newQuestions){
         })
     )
     return questionsAddedToBackend
+}
+
+export function checkAnswersBackend(questions){
+    let test = questions
+    return axios.put(`${url}/api/questions`,{test},{headers:{'x-token': t}})
 }
