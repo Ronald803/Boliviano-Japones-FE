@@ -28,7 +28,7 @@ function TestTable(props) {
     }
     
   return (
-    <div className='pt-2 mx-auto' style={{"maxWidth":"500px"}}>
+    <div className='pt-2 mx-auto' style={{"maxWidth":"550px"}}>
         <table className='table table-dark table-bordered'>
             <thead>
                 <tr>
@@ -42,6 +42,17 @@ function TestTable(props) {
                     }
                                         {
                         rol==="teacher" && <th scope='col'><div className='text-center'></div></th>
+                    }
+                    {
+                        rol==="teacher" &&
+                        <div>
+                            <th scope='col'><div className='text-center'>1 Sec</div></th>
+                            <th scope='col'><div className='text-center'>2 Sec</div></th>
+                            <th scope='col'><div className='text-center'>3 Sec</div></th>
+                            <th scope='col'><div className='text-center'>4 Sec</div></th>
+                            <th scope='col'><div className='text-center'>5 Sec</div></th>
+                            <th scope='col'><div className='text-center'>6 Sec</div></th>
+                        </div>
                     }
                 </tr>
             </thead>

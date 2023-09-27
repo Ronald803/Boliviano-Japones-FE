@@ -13,7 +13,7 @@ function InfoTeachersPage() {
           <h5 className="text-white text-center bg-transparent">AREA LENGUA EXTRANJERA</h5>
           <div className='card-body border rounded bg-dark bg-opacity-75 mt-4'>
             <h4 className="text-white text-center bg-transparent">Plantel Docente</h4>
-            <div><button onClick={()=>setLoginFormVisible(!loginFormVisible)}>Iniciar Sesión</button></div>
+            <div className='text-center'><button onClick={()=>setLoginFormVisible(!loginFormVisible)} className='btn btn-success mb-2'>Iniciar Sesión</button></div>
             {loginFormVisible&&<LoginForm rol={"teacher"}/>}
             <div className='row pt-4'>
               <div className='col-sm-4'>
