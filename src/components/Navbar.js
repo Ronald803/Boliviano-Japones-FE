@@ -1,8 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import Translator from './Translator'
 
 function Navbar() {
-  const [translator, setTranslator] = useState(false)
+  const [translator, setTranslator] = useState(false);
+  const [sessionStarted, setSessionStarted] = useState(false);
+  let userName = localStorage.getItem('n')
+  useEffect(() => {
+    if(userName){setSessionStarted(userName)}
+  }, [])
+  const cerrarSesion = () => {
+    localStorage.setItem('n',"");
+    localStorage.setItem('t',"");
+    localStorage.setItem('r',"");
+    localStorage.setItem('testID',"");
+    window.location.reload()
+  }
   return (
   <div style={{"position":"relative"}} className='bg-danger'>
     <div style={{"position":"absolute","left":"0px","top":"0px","width":"100%"}} className='text-center pt-1 my-0 '><a className="navbar-brand text-white m-0" href="/"><h3 className='my-0'>UE Boliviano Japonés B</h3></a></div>
@@ -22,6 +34,13 @@ function Navbar() {
             <li className="nav-item">
               <a className="nav-link text-white " href="/users">Usuarios</a>
             </li>
+            {
+              sessionStarted 
+              && 
+              <li className='nav-item'>
+                <a className='nav-link text-white' href='#' onClick={()=>cerrarSesion()}>{userName}(Cerrar Sesión)</a>
+              </li>
+            }
             <li className="nav-item">
               <a className="nav-link text-white " href="/infoTeachers">Plantel Docente</a>
             </li>
