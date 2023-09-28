@@ -39,6 +39,12 @@ function Navbar() {
               </li>
             }
             {
+              rol === "teacher" &&
+              <li className="nav-item">
+                <a className="nav-link text-white " href="/courses">Mis Cursos</a>
+              </li>
+            }
+            {
               sessionStarted 
               && 
               <li className='nav-item'>
