@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { getClassesBackend } from '../axiosRequests/classesRequests';
+import CoursesTable from '../components/CoursesTable';
 
 function CoursesPage() {
     const auxClasses = localStorage.getItem('c').split(',');
@@ -22,7 +23,10 @@ function CoursesPage() {
     console.log(auxClasses);
     console.log(teacherClasses);
   return (
-    <div>CoursesPage</div>
+    <div>
+      CoursesPage
+      <CoursesTable data={teacherClasses}/>
+    </div>
   )
 }
 
