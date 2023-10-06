@@ -9,15 +9,9 @@ function CoursesTable(props) {
             <thead>
                 <tr>
                     <th scope='col'><div className='text-center'>#</div></th>
-                    <th scope='col'><div className='text-center'>Nivel</div></th>
-                    
-                    <th scope='col'><div className='text-center'>Paralelo</div></th>
-                                       
-                    <th scope='col'><div className='text-center'></div></th>
-                    
-                    
-                    
-                    
+                    <th scope='col'><div className='text-center'>Nivel</div></th>                    
+                    <th scope='col'><div className='text-center'>Paralelo</div></th>                                       
+                    <th scope='col'><div className='text-center'></div></th>                   
                 </tr>
             </thead>
             <tbody>
@@ -30,13 +24,13 @@ function CoursesTable(props) {
                             </th>
                             <th>
                                 <div className='text-center'><span>{classes.level}</span></div>
-                            </th>
-                            
-                            <th><div className='text-center'><span>{classes.parallel}</span></div></th>
-                            
-                            
-                            <th><div className='text-center'><button className='btn btn-secondary'>Ver Examen</button></div></th>
-                            
+                            </th>                            
+                            <th>
+                                <div className='text-center'><span>{classes.parallel}</span></div>
+                            </th>                
+                            <th>
+                                <div className='text-center'><button className='btn btn-secondary'>Ver Examen</button></div>
+                            </th>  
                         </tr>
                         )
                     } )

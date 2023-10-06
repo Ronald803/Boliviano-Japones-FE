@@ -6,6 +6,18 @@ function Navbar() {
   const [sessionStarted, setSessionStarted] = useState(false);
   let userName = localStorage.getItem('n')
   let rol = localStorage.getItem('r')
+  let classes = localStorage.getItem('c').split(',');
+  let reconstructedClasses = [];
+  let auxArray = [];
+  classes.map((clas,index)=>{
+    if(index%2===0){
+      auxArray.push(clas);
+    } else {
+      auxArray.push(clas);
+      reconstructedClasses.push(auxArray);
+      auxArray = [];
+    }
+  })
   useEffect(() => {
     if(userName){setSessionStarted(userName)}
   }, [])
@@ -15,6 +27,9 @@ function Navbar() {
     localStorage.setItem('r',"");
     localStorage.setItem('testID',"");
     window.location.reload()
+  }
+  const chooseClasses = (idClasses)=>{
+    localStorage.setItem('idClasses',idClasses)
   }
   return (
   <div style={{"position":"relative"}} className='bg-danger'>
@@ -40,8 +55,19 @@ function Navbar() {
             }
             {
               rol === "teacher" &&
-              <li className="nav-item">
-                <a className="nav-link text-white " href="/courses">Mis Cursos</a>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Mis cursos
+                </a>
+                <ul class="dropdown-menu">
+                  {
+                    reconstructedClasses.map( (classess,index)=>{
+                      return (
+                      <li><a class="dropdown-item" href="/courses" onClick={()=>chooseClasses(classes[0])}>{classess[1]}</a></li>    
+                      )
+                    } )    
+                  }
+                </ul>
               </li>
             }
             {
@@ -51,9 +77,12 @@ function Navbar() {
                 <a className='nav-link text-white' href='#' onClick={()=>cerrarSesion()}>{userName}(Cerrar Sesión)</a>
               </li>
             }
-            <li className="nav-item">
-              <a className="nav-link text-white " href="/infoTeachers">Plantel Docente</a>
-            </li>
+            {
+              rol !== "teacher" &&
+              <li className="nav-item">
+                <a className="nav-link text-white " href="/infoTeachers">Plantel Docente</a>
+              </li>
+            }
           </ul>
         </div>
       </div>
