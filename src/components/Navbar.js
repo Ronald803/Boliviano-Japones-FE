@@ -28,8 +28,9 @@ function Navbar() {
     localStorage.setItem('testID',"");
     window.location.reload()
   }
-  const chooseClasses = (idClasses)=>{
+  const chooseClasses = (idClasses,name)=>{
     localStorage.setItem('idClasses',idClasses)
+    localStorage.setItem('nameClasses',name)
   }
   return (
   <div style={{"position":"relative"}} className='bg-danger'>
@@ -63,7 +64,7 @@ function Navbar() {
                   {
                     reconstructedClasses.map( (classess,index)=>{
                       return (
-                      <li><a class="dropdown-item" href="/courses" onClick={()=>chooseClasses(classes[0])}>{classess[1]}</a></li>    
+                      <li><a class="dropdown-item" href="/courses" onClick={()=>chooseClasses(classess[0],classess[1])}>{classess[1]}</a></li>    
                       )
                     } )    
                   }

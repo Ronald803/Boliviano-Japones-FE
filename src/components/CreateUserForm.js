@@ -34,25 +34,6 @@ function CreateUserForm() {
             console.log(answer.data);
         })
         .catch(e=>{ console.log(e) })
-        // _____________________________ Peticion a Backend ______________________________
-        //await createNewUser(newUser)
-        //    .then( answer =>{
-        //        //console.log(answer.data);
-        //        sessionStorage.setItem('t',answer.data.body.token)
-        //        sessionStorage.setItem('n',answer.data.body.name)
-        //        sessionStorage.setItem('r',answer.data.body.rol)
-        //        successAlert(answer.data.message)
-        //        //alert(answer.data.message)
-        //        //window.location.href='/'
-        //        setTimeout(() => {
-        //            window.location.href='/'  
-        //          }, 2500);
-        //    })
-        //    .catch( error => {
-        //        console.log(error.data);
-        //        //alert(error.data.body.message)
-        //        errorAlert(error.data.body.message)
-        //    })
     }
     const handleChange = (e) => {
         setNewUser({
@@ -73,7 +54,7 @@ function CreateUserForm() {
                     id='name'
                     name='name'
                     onChange={handleChange}
-                    className='text-white form-control'
+                    className='form-control'
                 />
             </div>
             <div className='bg-transparent text-white input-group'>
@@ -83,7 +64,7 @@ function CreateUserForm() {
                     id='password'
                     name='password'
                     onChange={handleChange}
-                    className='text-white form-control'
+                    className='form-control'
                 />
             </div>
             <div className='bg-transparent text-white input-group'>
