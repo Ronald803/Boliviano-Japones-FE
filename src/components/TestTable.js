@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { getExamsBackend, getQuestionsToBackend } from '../axiosRequests/testsRequests';
+import TestDemoTeacher from './TestDemoTeacher';
 
 function TestTable(props) {
-    const {takeTheTest,setTheQuestions} = props
+    const {takeTheTest,setTheQuestions,infoClasses} = props
     const [tests, setTests] = useState([]);
+    const [questionsTest, setQuestionsTest] = useState([]);
     useEffect(() => {
         getExam()
     }, []);
@@ -19,16 +21,34 @@ function TestTable(props) {
             } )
     }
     const chooseTest = (idTest)=>{
-        getQuestionsToBackend(idTest)
+        getQuestionsToBackend(idTest,'s')
             .then(answer=>{
                 setTheQuestions(answer.data)
                 takeTheTest(true)
             })
             .catch(error=>{console.log(error)})
     }
-    
+    const isTestEnable = (idTest) => {
+        let enable = false;
+        infoClasses?.testsAvailable.map(test=>{
+            if(test===idTest){
+                enable = true
+            }
+        })
+        return enable
+    }
+    const getSpecificTest = (idTest) => {
+        console.log(idTest);
+        getQuestionsToBackend(idTest,'t')
+            .then(answer=>{
+                console.log(answer.data);
+                setQuestionsTest(answer.data);
+            })
+            .catch(e=>console.log(e))
+    }
   return (
     <div className='pt-2 mx-auto' style={{"maxWidth":"900px"}}>
+        <TestDemoTeacher test={questionsTest}/>
         <table className='table table-dark table-bordered'>
             <thead>
                 <tr>
@@ -40,6 +60,7 @@ function TestTable(props) {
                     {
                         rol==="teacher" && <th scope='col'><div className='text-center'>Level</div></th>
                     }
+                    <th scope='col'><div className='text-center'>Questions</div></th>
                     {
                         rol==="teacher" && <th scope='col'><div className='text-center'></div></th>
                     }
@@ -77,11 +98,28 @@ function TestTable(props) {
                             {
                                 rol==="teacher" && <th><div className='text-center'><span>{test.level}</span></div></th>
                             }
+                            <th>
+                                <div className='text-center'><span>{test.questions}</span></div>
+                            </th>
                             {
-                                rol==="teacher" && <th><div className='text-center'><button className='btn btn-secondary'>Habilitar Examen</button></div></th>
+                                rol==="teacher" && <th><div className='text-center'>
+                                    {
+                                        isTestEnable(test._id)
+                                        ?
+                                        <div>Examen habilitado para el curso</div>    
+                                        :
+                                        <button className='btn btn-secondary'>Habilitar Examen</button>   
+                                    }
+                                    </div></th>
                             }
                             {
-                                rol==="teacher" && <th><div className='text-center'><button className='btn btn-secondary'>Ver Examen</button></div></th>
+                                rol==="teacher" 
+                                && 
+                                <th>
+                                    <div className='text-center'>
+                                        <button className='btn btn-secondary' onClick={()=>getSpecificTest(test._id)}>Ver Examen</button>
+                                    </div>
+                                </th>
                             }
                         </tr>
                         )

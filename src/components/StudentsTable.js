@@ -36,7 +36,7 @@ function StudentsTable(props) {
                                     return(
                                         <th className='text-center'>
                                             <span>{point.points}</span>
-                                            {point.points!==null&&<button className='btn btn-success'>R</button>}
+                                            {point.points!==null&&<button className='btn btn-success ms-4'>R</button>}
                                         </th>                                        
                                     )
                                 })

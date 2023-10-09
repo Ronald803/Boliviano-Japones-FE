@@ -35,7 +35,7 @@ function CoursesPage() {
         <StudentsTable students={students} infoClasses={teacherClasses}/>
         :
         <div>
-          <TestTable infoClasses={teacherClasses}/>
+          <TestTable infoClasses={teacherClasses} />
         </div>
       }
     </div>

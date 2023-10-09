@@ -10,8 +10,8 @@ export function getExamsBackend(){
     return axios.get(`${url}/api/tests/${r}`,{headers:{'x-token': t}})
 }
 
-export function getQuestionsToBackend(idTest){
-    return axios.get(`${url}/api/questions/s?test=${idTest}`,{headers:{'x-token': t}})
+export function getQuestionsToBackend(idTest,rol){
+    return axios.get(`${url}/api/questions/${rol}?test=${idTest}`,{headers:{'x-token': t}})
 }
 
 export function postNewTestBackend(newTest){
