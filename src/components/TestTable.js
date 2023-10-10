@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { getExamsBackend, getQuestionsToBackend } from '../axiosRequests/testsRequests';
+import { enableTestBackend, getExamsBackend, getQuestionsToBackend } from '../axiosRequests/testsRequests';
 import TestDemoTeacher from './TestDemoTeacher';
 
 function TestTable(props) {
     const {takeTheTest,setTheQuestions,infoClasses} = props
     const [tests, setTests] = useState([]);
     const [questionsTest, setQuestionsTest] = useState([]);
+    const [nameSpecificTest, setNameSpecificTest] = useState("")
     useEffect(() => {
         getExam()
     }, []);
@@ -37,18 +38,35 @@ function TestTable(props) {
         })
         return enable
     }
-    const getSpecificTest = (idTest) => {
+    const getSpecificTest = (idTest,testName) => {
         console.log(idTest);
         getQuestionsToBackend(idTest,'t')
             .then(answer=>{
                 console.log(answer.data);
                 setQuestionsTest(answer.data);
+                setNameSpecificTest(testName);
             })
             .catch(e=>console.log(e))
     }
+    const enableSpecificTest = (idTest) => {
+        enableTestBackend(idTest,infoClasses._id)
+        .then(answer=>console.log(answer))
+        .catch(e=>console.log(e))
+    }
   return (
     <div className='pt-2 mx-auto' style={{"maxWidth":"900px"}}>
-        <TestDemoTeacher test={questionsTest}/>
+        {
+            nameSpecificTest != ""
+            &&
+            <div className='bg-dark bg-opacity-50 py-1'>
+                <div className='text-center row'>
+                    <h5 className='col-10 text-white'>{nameSpecificTest}</h5>
+                    <button className='col-1 btn btn-warning mx-2 mb-2' onClick={()=>setNameSpecificTest("")}>Cerrar</button>
+                </div>
+                <TestDemoTeacher test={questionsTest}/>
+            </div>
+
+        }
         <table className='table table-dark table-bordered'>
             <thead>
                 <tr>
@@ -108,7 +126,7 @@ function TestTable(props) {
                                         ?
                                         <div>Examen habilitado para el curso</div>    
                                         :
-                                        <button className='btn btn-secondary'>Habilitar Examen</button>   
+                                        <button className='btn btn-secondary' onClick={()=>enableSpecificTest(test._id)}>Habilitar Examen</button>   
                                     }
                                     </div></th>
                             }
@@ -117,7 +135,7 @@ function TestTable(props) {
                                 && 
                                 <th>
                                     <div className='text-center'>
-                                        <button className='btn btn-secondary' onClick={()=>getSpecificTest(test._id)}>Ver Examen</button>
+                                        <button className='btn btn-secondary' onClick={()=>getSpecificTest(test._id,test.name)}>Ver Examen</button>
                                     </div>
                                 </th>
                             }

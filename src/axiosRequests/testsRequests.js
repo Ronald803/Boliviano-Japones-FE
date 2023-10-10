@@ -32,3 +32,7 @@ export function checkAnswersBackend(questions){
     let test = questions
     return axios.put(`${url}/api/questions`,{test},{headers:{'x-token': t}})
 }
+
+export function enableTestBackend(idTest,idClasses){
+    return axios.put(`${url}/api/classes/tests`,{idClasses,idTest},{headers:{'x-token': t}})
+}
