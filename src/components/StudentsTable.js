@@ -18,11 +18,14 @@ function StudentsTable(props) {
                             )
                         } )
                     }
+                    <th scope='col'><div className='text-center'>Total</div></th>
                 </tr>
             </thead>
             <tbody>
                 {
                     students.map( (student,index)=>{
+                        let total = 0;
+                        let numberOfTests = 0;
                         return(
                         <tr>
                             <th>
@@ -33,6 +36,8 @@ function StudentsTable(props) {
                             </th>
                             {
                                 student?.points.map((point,inde)=>{
+                                    total = point.points + total;
+                                    numberOfTests++
                                     return(
                                         <th className='text-center'>
                                             <span>{point.points}</span>
@@ -41,6 +46,9 @@ function StudentsTable(props) {
                                     )
                                 })
                             }
+                            <th>
+                                <div className='text-center'><span>{total/numberOfTests}</span></div>
+                            </th>
                         </tr>
                         )
                     } )
