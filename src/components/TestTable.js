@@ -50,8 +50,8 @@ function TestTable(props) {
     }
     const enableSpecificTest = (idTest) => {
         enableTestBackend(idTest,infoClasses._id)
-        .then(answer=>console.log(answer))
-        .catch(e=>console.log(e))
+            .then(answer=>console.log(answer))
+            .catch(e=>console.log(e))
     }
   return (
     <div className='pt-2 mx-auto' style={{"maxWidth":"900px"}}>

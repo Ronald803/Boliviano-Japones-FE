@@ -1,7 +1,7 @@
 import React from 'react'
 
 function StudentsTable(props) {
-    const {students,infoClasses} = props;
+    const {students,infoClasses,maxScoreTest} = props;
     console.log(students);
     console.log(infoClasses);
     return (
@@ -18,7 +18,7 @@ function StudentsTable(props) {
                             )
                         } )
                     }
-                    <th scope='col'><div className='text-center'>Total</div></th>
+                    <th scope='col'><div className='text-center'>Total/{maxScoreTest*100} </div></th>
                 </tr>
             </thead>
             <tbody>
@@ -40,14 +40,14 @@ function StudentsTable(props) {
                                     numberOfTests++
                                     return(
                                         <th className='text-center'>
-                                            <span>{point.points}</span>
+                                            <span>{point.points*maxScoreTest}</span>
                                             {point.points!==null&&<button className='btn btn-success ms-4'>R</button>}
                                         </th>                                        
                                     )
                                 })
                             }
                             <th>
-                                <div className='text-center'><span>{total/numberOfTests}</span></div>
+                                <div className='text-center'><span>{(total/numberOfTests)*maxScoreTest}</span></div>
                             </th>
                         </tr>
                         )

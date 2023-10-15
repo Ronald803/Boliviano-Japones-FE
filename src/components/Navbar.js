@@ -45,9 +45,12 @@ function Navbar() {
         </button>
         <div className="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
           <ul className="navbar-nav text-end">
+            {
+              rol !== "teacher" &&
             <li className="nav-item">
               <a className="nav-link text-white " href="/test">Tareas</a>
             </li>
+            }
             {
               rol === "teacher" &&
               <li className="nav-item">

@@ -9,6 +9,7 @@ function CoursesPage() {
   const [students, setStudents] = useState([])  ;
   const [category, setCategory] = useState("students")
   const nameClasses = localStorage.getItem('nameClasses');
+  const [maxScore, setMaxScore] = useState(1)
   useEffect(() => {
       getSpecificClassBackend()
         .then(answer=>{
@@ -32,10 +33,16 @@ function CoursesPage() {
       </div>
       {
         category === "students" ?
-        <StudentsTable students={students} infoClasses={teacherClasses}/>
+        <div>
+          <div className='row text-center'>
+            <div className='col'><button className='btn btn-success' onClick={()=>setMaxScore(1)}>Sobre 100</button></div>
+            <div className='col'><button className='btn btn-success' onClick={()=>setMaxScore(0.35)}>Sobre 35</button></div>
+          </div>
+          <StudentsTable students={students} infoClasses={teacherClasses} maxScoreTest={maxScore}/>
+        </div>
         :
         <div>
-          <TestTable infoClasses={teacherClasses} />
+          <TestTable infoClasses={teacherClasses}/>
         </div>
       }
     </div>
