@@ -19,14 +19,18 @@ function LoginForm(props) {
         loginToBackend(user,rol)
             .then(answer=>{
                 console.log(answer.data);
-                localStorage.setItem('t',answer.data.token);
-                localStorage.setItem('n',answer.data.name);
-                localStorage.setItem('r',rol);
-                localStorage.setItem('c',answer.data.classes);
-                successAlert("Bienvenido");
-                setTimeout(() => {
-                    window.location.href='/test'  
-                }, 2500);
+                if(answer.data.msg === "Incorrect information"){
+                    errorAlert("Datos incorrectos")
+                }else{
+                    localStorage.setItem('t',answer.data.token);
+                    localStorage.setItem('n',answer.data.name);
+                    localStorage.setItem('r',rol);
+                    localStorage.setItem('c',answer.data.classes);
+                    successAlert("Bienvenido");
+                    setTimeout(() => {
+                        window.location.reload()
+                    }, 2500);
+                }
             })
             .catch(e=>{
                 console.log(e);
